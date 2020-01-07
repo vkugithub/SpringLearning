@@ -1,0 +1,5 @@
+create Table student(
+student_id varchar2(100),
+student_name varchar2(100),
+age number(20),
+dob date);
