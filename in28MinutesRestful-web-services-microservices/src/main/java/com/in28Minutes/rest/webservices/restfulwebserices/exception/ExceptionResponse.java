@@ -27,4 +27,13 @@ public class ExceptionResponse {
     public String getDetails() {
         return details;
     }
+
+    @Override
+    public String toString() {
+        return "ExceptionResponse{" +
+                "timestamp=" + timestamp +
+                ", message='" + message + '\'' +
+                ", details='" + details + '\'' +
+                '}';
+    }
 }

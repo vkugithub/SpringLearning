@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @RestController
-public class UserResource {
+public class UserResourceController {
 
     @Autowired
     private UserDaoService service;
@@ -28,6 +28,7 @@ public class UserResource {
 
     @GetMapping("users/{id}")
     public Resource<User> retrieveUser(@PathVariable int id) {
+        System.out.println(String.format(" Requested for user id %s", id));
         User user =  service.findOne(id);
         if(user==null) {
             throw new UserNotFoundException("id-" + id);
