@@ -18,7 +18,8 @@
     <modules>
         <module>in28MinutesRestful-web-services-microservices</module>
         <module>panValidation</module>
-        <module>restApiExcercise</module>
+        <module>springMVCProject</module>
+        <module>springRestApiPractise</module>
     </modules>
 
 
