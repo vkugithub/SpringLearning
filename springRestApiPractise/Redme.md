@@ -1,0 +1,1 @@
+if you are unable to debug in spring boot, use following command spring-boot:run -Dspring-boot.run.fork=false

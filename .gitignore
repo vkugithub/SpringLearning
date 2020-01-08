@@ -4,3 +4,10 @@ idea
 */*/target
 */*/*/target
 */*/*/*/target
+
+*.iml
+*/*.iml
+*/*/*.iml
+*/*/*/*.iml
+*/*/*/*/*.iml
+*/*/*/*/*/*.iml

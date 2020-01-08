@@ -3,6 +3,7 @@ package com.controller;
 import com.domain.User;
 import com.exception.UserNotFoundException;
 import com.service.UserDaoService;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
@@ -137,6 +138,12 @@ public class UserResourceController {
     public ResponseEntity<String> readMessage(@RequestHeader("Accept-Language") Locale locale) {
 
         String msg =  userDaoService.readMessage(locale);
+        return new ResponseEntity<String>(msg,HttpStatus.OK);
+    }
+
+    @GetMapping("/goodMorningMessage2")
+    public ResponseEntity<String> readMessage2() {
+        String msg =  userDaoService.readMessage(LocaleContextHolder.getLocale());
         return new ResponseEntity<String>(msg,HttpStatus.OK);
     }
 }
