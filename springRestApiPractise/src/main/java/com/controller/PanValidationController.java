@@ -35,9 +35,5 @@ public class PanValidationController {
 	        return ResponseEntity.ok(account);
 	    }
 
-	@GetMapping("/")
-	ResponseEntity defaultRequest() {
 
-		return new ResponseEntity(HttpStatus.OK);
-	}
 }
