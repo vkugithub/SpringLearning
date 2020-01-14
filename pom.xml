@@ -20,6 +20,7 @@
         <module>panValidation</module>
         <module>springMVCProject</module>
         <module>springRestApiPractise</module>
+        <module>microService</module>
     </modules>
 
 
