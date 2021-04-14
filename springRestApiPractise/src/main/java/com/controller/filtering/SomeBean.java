@@ -1,4 +1,4 @@
-package com.filtering;
+package com.controller.filtering;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

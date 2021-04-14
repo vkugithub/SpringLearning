@@ -15,3 +15,5 @@ public class CurrencyConversionServiceApplication {
 	}
 
 }
+
+//com.springLearning.microservices.currencyconversionservice (this is package of this project)

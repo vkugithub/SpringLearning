@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,7 @@ public class CurrencyConversionController {
         return new CurrencyConversionBean(responseEntity.getBody().getId(),from, to, amount, responseEntity.getBody().getInputAmount().multiply(amount));
     }
 
+    @Transactional
     public CurrencyConversionBean getDefaultConversionResponse(String from, String to,
                                                                BigDecimal amount){
         return new CurrencyConversionBean(0L,from, to, BigDecimal.ONE, BigDecimal.ONE.multiply(amount));

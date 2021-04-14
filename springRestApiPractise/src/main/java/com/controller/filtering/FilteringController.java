@@ -1,4 +1,4 @@
-package com.filtering;
+package com.controller.filtering;
 
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;

@@ -9,9 +9,12 @@ import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.QueryParam;
 
 import javax.validation.Valid;
@@ -25,18 +28,20 @@ public class UserResourceController {
     @Autowired
     UserDaoService userDaoService;
 
-    @GetMapping("/users")
+    @GetMapping(value="/users", produces = "application/json"  )
     public List<User>  retrieveAllUsers(){
         return userDaoService.findAll();
     }
 
     @GetMapping("users/{id}")
-    public Resource<User> retrieveUser(@PathVariable int id) {
+    public Resource<User> retrieveUser(@PathVariable int id, HttpServletRequest request) {
         System.out.println(String.format(" Requested for user id %s", id));
         User user =  userDaoService.findOne(id);
         if(user==null) {
             throw new UserNotFoundException("id-" + id);
         }
+
+        System.out.println(" HttpServletRequest in UserResourceController : "+ request.getPathInfo());
 
         // HATEOAS
         Resource<User> resource = new Resource<>(user);
@@ -81,10 +86,10 @@ public class UserResourceController {
     }
 
     //Difference between query param and request param is query param is dependency of javax.ws.rs and requestparam is dependency is of spring framework and
-    //It's not mendatory to pass all query param but in requestparam need to pass all request param util you mention as required false.
+    //It's not mendatory to pass all query param but in requestparam need to pass all request param until you mention as required false.
 
     @GetMapping("searchUserByRequestparam")
-    public ResponseEntity<Object> searchUserByRequestParam(@RequestParam("id") int id, @RequestParam("name") String name) {
+    public ResponseEntity<Object> searchUserByRequestParam(@RequestParam("id") int id, @RequestParam(name="name",required = false) String name) {
         System.out.println(String.format(" Requested for user id %s", id));
         User user =  userDaoService.searchUser(id, name);
         if(user==null) {
